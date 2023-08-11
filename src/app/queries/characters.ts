@@ -10,6 +10,9 @@ export const GET_CHARACTERS = gql`
         gender
         status
       }
+      info {
+        next
+      }
     }
   }
 `;

@@ -13,6 +13,7 @@ import { CharactersListComponent } from './components/characters-list/characters
 import { CharacterItemComponent } from './components/character-item/character-item.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CharacterGenderComponent } from './components/character-gender/character-gender.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CharacterGenderComponent } from './components/character-gender/characte
         borderRadius: '8px',
       },
     }),
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

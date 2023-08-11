@@ -1,5 +1,9 @@
-:host {
+.list {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.fetching {
+  margin-top: 12px;
 }

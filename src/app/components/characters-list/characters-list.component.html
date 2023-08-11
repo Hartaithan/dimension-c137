@@ -1,8 +1,17 @@
 <ng-container *ngIf="!loading; else skeleton">
-  <app-character-item
-    *ngFor="let character of characters"
-    [character]="character"></app-character-item>
+  <div class="list" infiniteScroll (scrolled)="fetchMore()">
+    <app-character-item
+      *ngFor="let character of characters"
+      [character]="character"></app-character-item>
+  </div>
 </ng-container>
 <ng-template #skeleton>
   <ngx-skeleton-loader count="7" appearance="line"></ngx-skeleton-loader>
 </ng-template>
+<ng-container *ngIf="fetching">
+  <div class="fetching">
+    <ngx-skeleton-loader
+      class="fetching"
+      count="7"
+      appearance="line"></ngx-skeleton-loader></div
+></ng-container>
