@@ -7,6 +7,8 @@ import { MainPageComponent } from './pages/main/main.component';
 import { CharacterPageComponent } from './pages/character/character.component';
 import { MainLayoutComponent } from './layouts/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import { HeaderComponent } from './components/header/header.component';
     MainLayoutComponent,
     HeaderComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, GraphQLModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
