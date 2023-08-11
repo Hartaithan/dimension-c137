@@ -1,6 +1,19 @@
 :host {
   display: flex;
+  align-items: center;
   background: #1e1e1e;
+  min-height: 100px;
   border-radius: 8px;
   padding: 8px 12px;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  margin-right: 12px;
+}
+
+p {
+  height: fit-content;
 }

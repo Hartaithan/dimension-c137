@@ -11,6 +11,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CharactersListComponent } from './components/characters-list/characters-list.component';
 import { CharacterItemComponent } from './components/character-item/character-item.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,21 @@ import { CharacterItemComponent } from './components/character-item/character-it
     CharactersListComponent,
     CharacterItemComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, GraphQLModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    GraphQLModule,
+    HttpClientModule,
+    NgxSkeletonLoaderModule.forRoot({
+      animation: 'pulse',
+      loadingText: 'Loading...',
+      theme: {
+        background: '#2a2a2a',
+        height: '100px',
+        borderRadius: '8px',
+      },
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,3 +1,8 @@
-<app-character-item
-  *ngFor="let character of characters"
-  [character]="character"></app-character-item>
+<ng-container *ngIf="!loading; else skeleton">
+  <app-character-item
+    *ngFor="let character of characters"
+    [character]="character"></app-character-item>
+</ng-container>
+<ng-template #skeleton>
+  <ngx-skeleton-loader count="7" appearance="line"></ngx-skeleton-loader>
+</ng-template>
