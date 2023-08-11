@@ -1,1 +1,10 @@
-<h3>{{ character ? character.name : 'Name not found' }}</h3>
+<img
+  src="{{ character ? character.image : '/assets/placeholder.png' }}"
+  alt="character image" />
+<div>
+  <div class="row">
+    <h3>{{ character ? character.name : 'Name not found' }}</h3>
+    <app-character-gender [gender]="character?.gender"></app-character-gender>
+  </div>
+  <p>Status: {{ character ? character.status : 'Unknown' }}</p>
+</div>

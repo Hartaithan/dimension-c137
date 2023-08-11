@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CharactersListComponent } from './components/characters-list/characters-list.component';
 import { CharacterItemComponent } from './components/character-item/character-item.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { CharacterGenderComponent } from './components/character-gender/character-gender.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     HeaderComponent,
     CharactersListComponent,
     CharacterItemComponent,
+    CharacterGenderComponent,
   ],
   imports: [
     BrowserModule,
