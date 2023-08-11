@@ -9,6 +9,8 @@ import { MainLayoutComponent } from './layouts/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CharactersListComponent } from './components/characters-list/characters-list.component';
+import { CharacterItemComponent } from './components/character-item/character-item.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     CharacterPageComponent,
     MainLayoutComponent,
     HeaderComponent,
+    CharactersListComponent,
+    CharacterItemComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, GraphQLModule, HttpClientModule],
   providers: [],
