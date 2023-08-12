@@ -18,9 +18,13 @@
   <div
     class="episodes"
     *ngIf="character && character.episode && character.episode.length > 0">
-    <app-character-episode
-      *ngFor="let episode of character.episode"
-      [episode]="episode"></app-character-episode>
+    <h3 class="episodes__title">Episodes ({{ character.episode.length }})</h3>
+    <div class="episodes__grid">
+      <ng-container *ngFor="let episode of character.episode">
+        <app-character-episode *ngIf="episode" [episode]="episode">
+        </app-character-episode>
+      </ng-container>
+    </div>
   </div>
 </ng-container>
 <ng-template #empty>

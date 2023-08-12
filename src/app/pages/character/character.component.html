@@ -2,7 +2,14 @@
   <app-character-details [character]="character"></app-character-details>
 </ng-container>
 <ng-template #skeleton>
-  <ngx-skeleton-loader count="1" appearance="line"></ngx-skeleton-loader>
+  <ngx-skeleton-loader
+    count="1"
+    appearance="line"
+    [theme]="{
+      background: '#2a2a2a',
+      height: '124px',
+      borderRadius: '8px'
+    }"></ngx-skeleton-loader>
   <ngx-skeleton-loader
     count="1"
     appearance="line"
