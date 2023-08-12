@@ -1,8 +1,13 @@
+/* eslint-disable @ngrx/no-typed-global-store */
+/* eslint-disable @ngrx/no-store-subscription */
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Apollo, QueryRef } from 'apollo-angular';
-import { Characters, Query } from 'graphql/generated';
+import { Characters, FilterCharacter, Query } from 'graphql/generated';
 import { Subscription } from 'rxjs';
+import { FiltersState, RootStore } from 'src/app/models/filters.model';
 import { GET_CHARACTERS } from 'src/app/queries/characters';
+import { selectFilters } from 'src/app/store/filters/filters.selectors';
 
 @Component({
   selector: 'app-characters-list',
@@ -16,16 +21,27 @@ export class CharactersListComponent implements OnInit, OnDestroy {
   info: Characters['info'] = null;
 
   private query: QueryRef<Pick<Query, 'characters'>> | null = null;
-  private subscription: Subscription | null = null;
+  private querySubscription: Subscription | null = null;
 
-  constructor(private apollo: Apollo) {}
+  private filtersSubscription: Subscription | null = null;
 
-  ngOnInit() {
+  constructor(
+    private apollo: Apollo,
+    private store: Store<RootStore>
+  ) {}
+
+  fetchCharacters(filters: FiltersState) {
+    this.loading = true;
+    const filter: FilterCharacter = {
+      name: filters.search,
+      gender: filters.gender,
+      status: filters.status,
+    };
     this.query = this.apollo.watchQuery<Pick<Query, 'characters'>>({
       query: GET_CHARACTERS,
-      variables: { page: 1 },
+      variables: { filter, page: 1 },
     });
-    this.subscription = this.query.valueChanges.subscribe(
+    this.querySubscription = this.query.valueChanges.subscribe(
       ({ data, loading }) => {
         this.loading = loading;
         this.characters = data.characters?.results || [];
@@ -34,9 +50,20 @@ export class CharactersListComponent implements OnInit, OnDestroy {
     );
   }
 
+  ngOnInit() {
+    this.filtersSubscription = this.store
+      .select(selectFilters)
+      .subscribe(filters => {
+        this.fetchCharacters(filters);
+      });
+  }
+
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.querySubscription) {
+      this.querySubscription.unsubscribe();
+    }
+    if (this.filtersSubscription) {
+      this.filtersSubscription.unsubscribe();
     }
   }
 
