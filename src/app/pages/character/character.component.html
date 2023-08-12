@@ -1,11 +1,6 @@
 <ng-container *ngIf="!loading; else skeleton">
   <app-character-details [character]="character"></app-character-details>
 </ng-container>
-<ng-container *ngIf="!loading && !character">
-  <div class="empty">
-    <h3>Nothing found</h3>
-  </div>
-</ng-container>
 <ng-template #skeleton>
   <ngx-skeleton-loader count="1" appearance="line"></ngx-skeleton-loader>
   <ngx-skeleton-loader

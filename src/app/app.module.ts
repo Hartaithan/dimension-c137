@@ -27,6 +27,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { filtersReducer } from './store/filters/filters.reducer';
 import { RootStore } from './models/filters.model';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import { CharacterEpisodeComponent } from './components/character-episode/character-episode.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { CharacterDetailsComponent } from './components/character-details/charac
     CharactersTableComponent,
     ObserveElementDirective,
     CharacterDetailsComponent,
+    CharacterEpisodeComponent,
   ],
   imports: [
     BrowserModule,

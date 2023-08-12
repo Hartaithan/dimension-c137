@@ -1,0 +1,33 @@
+.profile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #1e1e1e;
+  min-height: 100px;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+}
+
+.content {
+  margin-left: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.gender {
+  display: flex;
+  align-items: center;
+  & > app-character-gender {
+    margin-left: 4px;
+    height: 24px;
+  }
+}

@@ -1,1 +1,30 @@
-<p>character-details works!</p>
+<ng-container *ngIf="character; else empty">
+  <div class="profile">
+    <img
+      class="image"
+      src="{{ character ? character.image : '/assets/placeholder.png' }}"
+      alt="character image" />
+    <div class="content">
+      <h3>{{ character.name || 'Name not found' }}</h3>
+      <p>Status: {{ character.status || 'Unknown' | titlecase }}</p>
+      <p>Species: {{ character.species || 'Unknown' | titlecase }}</p>
+      <div class="gender">
+        <p>Gender:</p>
+        <app-character-gender
+          [gender]="character.gender"></app-character-gender>
+      </div>
+    </div>
+  </div>
+  <div
+    class="episodes"
+    *ngIf="character && character.episode && character.episode.length > 0">
+    <app-character-episode
+      *ngFor="let episode of character.episode"
+      [episode]="episode"></app-character-episode>
+  </div>
+</ng-container>
+<ng-template #empty>
+  <div class="empty">
+    <h3>Nothing found</h3>
+  </div>
+</ng-template>
