@@ -26,6 +26,7 @@ import { ObserveElementDirective } from './directives/observe-element.directive'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { filtersReducer } from './store/filters/filters.reducer';
 import { RootStore } from './models/filters.model';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { RootStore } from './models/filters.model';
     CardsPageComponent,
     CharactersTableComponent,
     ObserveElementDirective,
+    CharacterDetailsComponent,
   ],
   imports: [
     BrowserModule,

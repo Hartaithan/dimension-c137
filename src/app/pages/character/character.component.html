@@ -1,2 +1,19 @@
-<p>character page works!</p>
-<p>id: {{ characterId }}</p>
+<ng-container *ngIf="!loading; else skeleton">
+  <app-character-details [character]="character"></app-character-details>
+</ng-container>
+<ng-container *ngIf="!loading && !character">
+  <div class="empty">
+    <h3>Nothing found</h3>
+  </div>
+</ng-container>
+<ng-template #skeleton>
+  <ngx-skeleton-loader count="1" appearance="line"></ngx-skeleton-loader>
+  <ngx-skeleton-loader
+    count="1"
+    appearance="line"
+    [theme]="{
+      background: '#2a2a2a',
+      height: '400px',
+      borderRadius: '8px'
+    }"></ngx-skeleton-loader>
+</ng-template>
