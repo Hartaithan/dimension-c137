@@ -21,3 +21,21 @@
   width: 50px;
   border-radius: 8px;
 }
+
+.fetching {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 16px;
+  background: #0e0e0e;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: #595959;
+}

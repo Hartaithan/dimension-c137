@@ -44,3 +44,8 @@
       borderRadius: '8px'
     }"></ngx-skeleton-loader>
 </ng-template>
+<ng-container *ngIf="fetching">
+  <div class="fetching">
+    <p>Loading...</p>
+    <mat-spinner [style]="{ width: '25px', height: '25px' }"></mat-spinner></div
+></ng-container>
