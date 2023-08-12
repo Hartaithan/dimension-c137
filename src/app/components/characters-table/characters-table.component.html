@@ -1,0 +1,46 @@
+<ng-container *ngIf="!loading; else skeleton">
+  <ng-container *ngIf="characters">
+    <table
+      mat-table
+      [dataSource]="characters"
+      infiniteScroll
+      (scrolled)="fetchMore()">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Image</th>
+        <td mat-cell *matCellDef="let element">
+          <img class="image" src="{{ element.image }}" alt="character image" />
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef>Gender</th>
+        <td mat-cell *matCellDef="let element">
+          <app-character-gender
+            [gender]="element.gender"></app-character-gender>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="goToCharacter(row)"></tr>
+    </table>
+  </ng-container>
+</ng-container>
+<ng-template #skeleton>
+  <ngx-skeleton-loader
+    count="1"
+    appearance="line"
+    [theme]="{
+      background: '#2a2a2a',
+      height: '80vh',
+      borderRadius: '8px'
+    }"></ngx-skeleton-loader>
+</ng-template>

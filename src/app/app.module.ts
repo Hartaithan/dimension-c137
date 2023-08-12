@@ -18,6 +18,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardsPageComponent } from './pages/cards/cards.component';
+import { CharactersTableComponent } from './components/characters-table/characters-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { CardsPageComponent } from './pages/cards/cards.component';
     CharactersListComponent,
     CharactersFiltersComponent,
     CardsPageComponent,
+    CharactersTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,8 @@ import { CardsPageComponent } from './pages/cards/cards.component';
     InfiniteScrollModule,
     StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
+    MatTableModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

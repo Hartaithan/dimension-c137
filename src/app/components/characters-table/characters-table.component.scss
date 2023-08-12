@@ -1,0 +1,23 @@
+.mdc-data-table {
+  &__table {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1e1e1e;
+  }
+}
+
+.mdc-data-table__cell + .mat-column-image {
+  display: flex;
+  align-items: center;
+}
+
+.mdc-data-table__cell + .loader {
+  display: unset;
+}
+
+.image {
+  margin: 8px 0px;
+  height: 50px;
+  width: 50px;
+  border-radius: 8px;
+}
