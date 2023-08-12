@@ -1,0 +1,38 @@
+.filters {
+  position: sticky;
+  top: 0;
+  display: flex;
+  gap: 12px;
+  padding: 12px 0px;
+  background: #121212;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  & > label {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  & > input,
+  & > select {
+    width: 100%;
+    min-height: 30px;
+    border-radius: 6px;
+    padding: 5px 10px;
+    background: #1e1e1e;
+    color: #fff;
+    border: none;
+    outline: none;
+  }
+}
+
+.filter#search {
+  flex: 1;
+}
+
+.filter#sort,
+.filter#status,
+.filter#gender {
+  width: 150px;
+}

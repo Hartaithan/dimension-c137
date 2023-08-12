@@ -9,10 +9,11 @@ import { MainLayoutComponent } from './layouts/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CharactersListComponent } from './components/characters-list/characters-list.component';
 import { CharacterItemComponent } from './components/character-item/character-item.component';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CharacterGenderComponent } from './components/character-gender/character-gender.component';
+import { CharactersListComponent } from './components/characters-list/characters-list.component';
+import { CharactersFiltersComponent } from './components/characters-filters/characters-filters.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
@@ -22,9 +23,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     CharacterPageComponent,
     MainLayoutComponent,
     HeaderComponent,
-    CharactersListComponent,
     CharacterItemComponent,
     CharacterGenderComponent,
+    CharactersListComponent,
+    CharactersFiltersComponent,
   ],
   imports: [
     BrowserModule,

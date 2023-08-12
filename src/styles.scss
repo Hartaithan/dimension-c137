@@ -26,7 +26,10 @@ app-main-layout {
   width: 100%;
 }
 
-app-main-page,
+app-main-page {
+  padding-bottom: 12px;
+}
+
 app-character-page {
   padding: 12px 0px;
 }
