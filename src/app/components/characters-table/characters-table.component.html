@@ -1,4 +1,7 @@
-<section class="table-container" tabindex="0" [hidden]="loading">
+<section
+  class="table-container"
+  tabindex="0"
+  [hidden]="loading || (characters && characters.length === 0)">
   <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
@@ -39,6 +42,11 @@
     [isContinuous]="true"
     [style]="{ height: '0px' }"></div>
 </section>
+<ng-container *ngIf="!loading && characters && characters.length === 0">
+  <div class="empty">
+    <h3>Nothing found</h3>
+  </div>
+</ng-container>
 <ng-container *ngIf="loading">
   <ngx-skeleton-loader
     count="1"
@@ -52,5 +60,6 @@
 <ng-container *ngIf="fetching">
   <div class="fetching">
     <p>Loading...</p>
-    <mat-spinner [style]="{ width: '25px', height: '25px' }"></mat-spinner></div
-></ng-container>
+    <mat-spinner [style]="{ width: '25px', height: '25px' }"></mat-spinner>
+  </div>
+</ng-container>

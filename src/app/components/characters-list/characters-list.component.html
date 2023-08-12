@@ -5,13 +5,17 @@
       [character]="character"></app-character-item>
   </div>
 </ng-container>
+<ng-container *ngIf="!loading && characters && characters.length === 0">
+  <div class="empty">
+    <h3>Nothing found</h3>
+  </div>
+</ng-container>
 <ng-template #skeleton>
   <ngx-skeleton-loader count="7" appearance="line"></ngx-skeleton-loader>
 </ng-template>
 <ng-container *ngIf="fetching">
   <div class="fetching">
-    <ngx-skeleton-loader
-      class="fetching"
-      count="7"
-      appearance="line"></ngx-skeleton-loader></div
-></ng-container>
+    <ngx-skeleton-loader class="fetching" count="7" appearance="line">
+    </ngx-skeleton-loader>
+  </div>
+</ng-container>
