@@ -1,21 +1,34 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Character, Characters, Maybe, Query } from 'graphql/generated';
 import { Subscription } from 'rxjs';
 import { GET_CHARACTERS } from 'src/app/queries/characters';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-characters-table',
   templateUrl: './characters-table.component.html',
   styleUrls: ['./characters-table.component.scss'],
 })
-export class CharactersTableComponent implements OnInit, OnDestroy {
+export class CharactersTableComponent
+  implements OnInit, OnDestroy, AfterViewInit
+{
   loading = true;
   fetching = false;
   characters: Characters['results'] = [];
   info: Characters['info'] = null;
   displayedColumns: string[] = ['id', 'image', 'name', 'gender'];
+  dataSource = new MatTableDataSource(this.characters ?? []);
+
+  @ViewChild(MatSort) sort: MatSort = new MatSort();
 
   private query: QueryRef<Pick<Query, 'characters'>> | null = null;
   private subscription: Subscription | null = null;
@@ -35,8 +48,13 @@ export class CharactersTableComponent implements OnInit, OnDestroy {
         this.loading = loading;
         this.characters = data.characters?.results || [];
         this.info = data.characters?.info || null;
+        this.dataSource.data = this.characters;
       }
     );
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   ngOnDestroy() {
@@ -65,6 +83,7 @@ export class CharactersTableComponent implements OnInit, OnDestroy {
         const prev = this.characters || [];
         const next = data.characters?.results || [];
         this.characters = [...prev, ...next];
+        this.dataSource.data = this.characters;
         this.info = data.characters?.info || null;
       })
       .catch(error => console.error('next page error', error))

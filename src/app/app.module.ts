@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardsPageComponent } from './pages/cards/cards.component';
 import { CharactersTableComponent } from './components/characters-table/characters-table.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ObserveElementDirective } from './directives/observe-element.directive';
 
@@ -56,6 +57,7 @@ import { ObserveElementDirective } from './directives/observe-element.directive'
     StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
     MatTableModule,
+    MatSortModule,
     MatProgressSpinnerModule,
   ],
   providers: [],

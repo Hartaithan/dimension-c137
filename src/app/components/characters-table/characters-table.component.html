@@ -1,42 +1,39 @@
-<ng-container *ngIf="!loading; else skeleton">
-  <section class="table-container" tabindex="0" *ngIf="characters">
-    <table mat-table [dataSource]="characters">
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-      </ng-container>
-      <ng-container matColumnDef="image">
-        <th mat-header-cell *matHeaderCellDef>Image</th>
-        <td mat-cell *matCellDef="let element">
-          <img class="image" src="{{ element.image }}" alt="character image" />
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-      </ng-container>
-      <ng-container matColumnDef="gender">
-        <th mat-header-cell *matHeaderCellDef>Gender</th>
-        <td mat-cell *matCellDef="let element">
-          <app-character-gender
-            [gender]="element.gender"></app-character-gender>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr
-        mat-row
-        *matRowDef="let row; columns: displayedColumns"
-        (click)="goToCharacter(row)"></tr>
-    </table>
-    <div
-      appObserveElement
-      #intersection="intersection"
-      (isIntersecting)="isIntersecting($event)"
-      [isContinuous]="true"
-      [style]="{ height: '0px' }"></div>
-  </section>
-</ng-container>
-<ng-template #skeleton>
+<section class="table-container" tabindex="0" [hidden]="loading">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let element">
+        <img class="image" src="{{ element.image }}" alt="character image" />
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>Gender</th>
+      <td mat-cell *matCellDef="let element">
+        <app-character-gender [gender]="element.gender"></app-character-gender>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="goToCharacter(row)"></tr>
+  </table>
+  <div
+    appObserveElement
+    #intersection="intersection"
+    (isIntersecting)="isIntersecting($event)"
+    [isContinuous]="true"
+    [style]="{ height: '0px' }"></div>
+</section>
+<ng-container *ngIf="loading">
   <ngx-skeleton-loader
     count="1"
     appearance="line"
@@ -45,7 +42,7 @@
       height: '80vh',
       borderRadius: '8px'
     }"></ngx-skeleton-loader>
-</ng-template>
+</ng-container>
 <ng-container *ngIf="fetching">
   <div class="fetching">
     <p>Loading...</p>
