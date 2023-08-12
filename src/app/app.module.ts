@@ -16,6 +16,7 @@ import { CharactersFiltersComponent } from './components/characters-filters/char
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { StoreModule } from '@ngrx/store';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { StoreModule } from '@ngrx/store';
     }),
     InfiniteScrollModule,
     StoreModule.forRoot({}, {}),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
