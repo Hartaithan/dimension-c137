@@ -19,6 +19,6 @@ export interface FiltersState {
   gender: Gender;
 }
 
-export interface Store {
+export interface RootStore {
   filters: FiltersState;
 }

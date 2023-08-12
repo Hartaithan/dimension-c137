@@ -25,7 +25,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ObserveElementDirective } from './directives/observe-element.directive';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { filtersReducer } from './store/filters/filters.reducer';
-import { Store } from './models/filters.model';
+import { RootStore } from './models/filters.model';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,7 @@ import { Store } from './models/filters.model';
     MatTableModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot<Store>({ filters: filtersReducer }),
+    StoreModule.forRoot<RootStore>({ filters: filtersReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],

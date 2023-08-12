@@ -1,3 +1,5 @@
+/* eslint-disable @ngrx/no-typed-global-store */
+/* eslint-disable @ngrx/no-store-subscription */
 import {
   AfterViewInit,
   Component,
@@ -7,11 +9,20 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo, QueryRef } from 'apollo-angular';
-import { Character, Characters, Maybe, Query } from 'graphql/generated';
+import {
+  Character,
+  Characters,
+  FilterCharacter,
+  Maybe,
+  Query,
+} from 'graphql/generated';
 import { Subscription } from 'rxjs';
 import { GET_CHARACTERS } from 'src/app/queries/characters';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Store } from '@ngrx/store';
+import { selectFilters } from 'src/app/store/filters/filters.selectors';
+import { FiltersState, RootStore } from 'src/app/models/filters.model';
 
 @Component({
   selector: 'app-characters-table',
@@ -31,19 +42,28 @@ export class CharactersTableComponent
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
   private query: QueryRef<Pick<Query, 'characters'>> | null = null;
-  private subscription: Subscription | null = null;
+  private querySubscription: Subscription | null = null;
+
+  private filtersSubscription: Subscription | null = null;
 
   constructor(
     private apollo: Apollo,
-    private router: Router
+    private router: Router,
+    private store: Store<RootStore>
   ) {}
 
-  ngOnInit() {
+  fetchCharacters(filters: FiltersState) {
+    this.loading = true;
+    const filter: FilterCharacter = {
+      name: filters.search,
+      gender: filters.gender,
+      status: filters.status,
+    };
     this.query = this.apollo.watchQuery<Pick<Query, 'characters'>>({
       query: GET_CHARACTERS,
-      variables: { page: 1 },
+      variables: { filter, page: 1 },
     });
-    this.subscription = this.query.valueChanges.subscribe(
+    this.querySubscription = this.query.valueChanges.subscribe(
       ({ data, loading }) => {
         this.loading = loading;
         this.characters = data.characters?.results || [];
@@ -53,13 +73,24 @@ export class CharactersTableComponent
     );
   }
 
+  ngOnInit() {
+    this.filtersSubscription = this.store
+      .select(selectFilters)
+      .subscribe(filters => {
+        this.fetchCharacters(filters);
+      });
+  }
+
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
 
   ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+    if (this.querySubscription) {
+      this.querySubscription.unsubscribe();
+    }
+    if (this.filtersSubscription) {
+      this.filtersSubscription.unsubscribe();
     }
   }
 
