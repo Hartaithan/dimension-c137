@@ -1,5 +1,5 @@
 <ng-container *ngIf="!loading; else skeleton">
-  <ng-container *ngIf="characters">
+  <section class="table-container" tabindex="0" *ngIf="characters">
     <table
       mat-table
       [dataSource]="characters"
@@ -26,13 +26,13 @@
             [gender]="element.gender"></app-character-gender>
         </td>
       </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr
         mat-row
         *matRowDef="let row; columns: displayedColumns"
         (click)="goToCharacter(row)"></tr>
     </table>
-  </ng-container>
+  </section>
 </ng-container>
 <ng-template #skeleton>
   <ngx-skeleton-loader

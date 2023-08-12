@@ -1,18 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 .mdc-data-table {
   &__table {
-    border-radius: 8px;
-    overflow: hidden;
     background-color: #1e1e1e;
+  }
+  &__cell + .mat-column-image {
+    display: flex;
+    align-items: center;
+  }
+  &__cell + .loader {
+    display: unset;
   }
 }
 
-.mdc-data-table__cell + .mat-column-image {
-  display: flex;
-  align-items: center;
-}
-
-.mdc-data-table__cell + .loader {
-  display: unset;
+.table-container {
+  height: 600px;
+  flex-grow: 1;
+  overflow: auto;
 }
 
 .image {
