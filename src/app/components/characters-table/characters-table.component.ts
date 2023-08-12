@@ -36,7 +36,7 @@ export class CharactersTableComponent
   fetching = false;
   characters: Characters['results'] = [];
   info: Characters['info'] = null;
-  displayedColumns: string[] = ['id', 'image', 'name', 'gender'];
+  displayedColumns: string[] = ['id', 'image', 'name', 'status', 'gender'];
   dataSource = new MatTableDataSource(this.characters ?? []);
 
   @ViewChild(MatSort) sort: MatSort = new MatSort();

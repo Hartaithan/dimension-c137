@@ -5,8 +5,8 @@
   </div>
   <div class="filter" id="status">
     <label for="status">Status</label>
-    <select id="status">
-      <option value="null" selected>All</option>
+    <select id="status" (change)="onStatusChange($event)">
+      <option value="" selected>All</option>
       <option value="alive">Alive</option>
       <option value="dead">Dead</option>
       <option value="unknown">Unknown</option>
@@ -14,8 +14,8 @@
   </div>
   <div class="filter" id="gender">
     <label for="gender">Gender</label>
-    <select id="gender">
-      <option value="null" selected>All</option>
+    <select id="gender" (change)="onGenderChange($event)">
+      <option value="" selected>All</option>
       <option value="female">Female</option>
       <option value="male">Male</option>
       <option value="genderless">Genderless</option>
