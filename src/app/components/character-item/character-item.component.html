@@ -5,7 +5,11 @@
   <div class="wrapper">
     <div class="row">
       <h3 class="name">{{ character ? character.name : 'Name not found' }}</h3>
-      <app-character-gender [gender]="character?.gender"></app-character-gender>
+      <div class="gender">
+        <p>Gender:</p>
+        <app-character-gender
+          [gender]="character?.gender"></app-character-gender>
+      </div>
     </div>
     <p class="status">Status: {{ character ? character.status : 'Unknown' }}</p>
   </div>

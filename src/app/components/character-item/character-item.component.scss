@@ -24,6 +24,14 @@ app-character-gender {
   font-size: 18px;
 }
 
+.gender {
+  display: flex;
+  align-items: center;
+  & > p {
+    display: none;
+  }
+}
+
 .status {
   text-transform: capitalize;
   text-align: left;
@@ -33,4 +41,34 @@ app-character-gender {
 .icon {
   margin-left: auto;
   margin-right: 12px;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .name {
+    width: 100%;
+    font-size: 14px;
+    text-align: start;
+  }
+
+  .gender {
+    & > p {
+      display: block;
+    }
+  }
+
+  app-character-gender {
+    margin-left: 0px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    margin-right: 6px;
+  }
 }
