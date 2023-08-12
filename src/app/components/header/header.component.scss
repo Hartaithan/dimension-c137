@@ -5,3 +5,15 @@
   min-height: 50px;
   border-bottom: 1px solid #2d2d2d;
 }
+
+.view {
+  display: flex;
+  gap: 6px;
+}
+
+.link {
+  text-decoration: none;
+  &.active {
+    text-decoration: underline;
+  }
+}
