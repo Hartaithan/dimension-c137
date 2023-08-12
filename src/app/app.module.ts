@@ -21,6 +21,7 @@ import { CardsPageComponent } from './pages/cards/cards.component';
 import { CharactersTableComponent } from './components/characters-table/characters-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ObserveElementDirective } from './directives/observe-element.directive';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CharactersFiltersComponent,
     CardsPageComponent,
     CharactersTableComponent,
+    ObserveElementDirective,
   ],
   imports: [
     BrowserModule,

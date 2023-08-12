@@ -67,9 +67,15 @@ export class CharactersTableComponent implements OnInit, OnDestroy {
         this.characters = [...prev, ...next];
         this.info = data.characters?.info || null;
       })
-      .catch(error => console.log('next page error', error))
+      .catch(error => console.error('next page error', error))
       .finally(() => {
         this.fetching = false;
       });
+  }
+
+  isIntersecting(status: boolean) {
+    if (status) {
+      this.fetchMore();
+    }
   }
 }

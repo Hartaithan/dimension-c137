@@ -1,10 +1,6 @@
 <ng-container *ngIf="!loading; else skeleton">
   <section class="table-container" tabindex="0" *ngIf="characters">
-    <table
-      mat-table
-      [dataSource]="characters"
-      infiniteScroll
-      (scrolled)="fetchMore()">
+    <table mat-table [dataSource]="characters">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>No.</th>
         <td mat-cell *matCellDef="let element">{{ element.id }}</td>
@@ -32,6 +28,12 @@
         *matRowDef="let row; columns: displayedColumns"
         (click)="goToCharacter(row)"></tr>
     </table>
+    <div
+      appObserveElement
+      #intersection="intersection"
+      (isIntersecting)="isIntersecting($event)"
+      [isContinuous]="true"
+      [style]="{ height: '0px' }"></div>
   </section>
 </ng-container>
 <ng-template #skeleton>
