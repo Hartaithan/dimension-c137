@@ -17,6 +17,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { StoreModule } from '@ngrx/store';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardsPageComponent } from './pages/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CharacterGenderComponent,
     CharactersListComponent,
     CharactersFiltersComponent,
+    CardsPageComponent,
   ],
   imports: [
     BrowserModule,
