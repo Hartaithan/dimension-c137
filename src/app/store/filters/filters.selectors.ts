@@ -1,7 +1,7 @@
 import { createSelector } from '@ngrx/store';
-import { FiltersState } from 'src/app/models/filters.model';
+import { FiltersState, Store } from 'src/app/models/filters.model';
 
-export const selectFiltersState = (state: FiltersState) => state;
+export const selectFiltersState = (store: Store) => store.filters;
 
 export const selectSearchFilter = createSelector(
   selectFiltersState,

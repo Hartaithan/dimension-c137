@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { FiltersState, Gender, Status } from 'src/app/models/filters.model';
-import { reset, setGender, setSearch, setStatus } from './filters.actions';
+import { FiltersActions } from './filters.actions';
 
 export const initialState: FiltersState = {
   search: '',
@@ -8,19 +8,19 @@ export const initialState: FiltersState = {
   gender: Gender.Default,
 };
 
-export const counterReducer = createReducer(
+export const filtersReducer = createReducer(
   initialState,
   on(
-    setSearch,
+    FiltersActions.setSearchFilter,
     (state, { value }): FiltersState => ({ ...state, search: value })
   ),
   on(
-    setStatus,
+    FiltersActions.setStatusFilter,
     (state, { value }): FiltersState => ({ ...state, status: value })
   ),
   on(
-    setGender,
+    FiltersActions.setGenderFilter,
     (state, { value }): FiltersState => ({ ...state, gender: value })
   ),
-  on(reset, (): FiltersState => initialState)
+  on(FiltersActions.resetFilters, (): FiltersState => initialState)
 );

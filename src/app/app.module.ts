@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ObserveElementDirective } from './directives/observe-element.directive';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { filtersReducer } from './store/filters/filters.reducer';
+import { Store } from './models/filters.model';
 
 @NgModule({
   declarations: [
@@ -54,11 +57,12 @@ import { ObserveElementDirective } from './directives/observe-element.directive'
       },
     }),
     InfiniteScrollModule,
-    StoreModule.forRoot({}, {}),
     BrowserAnimationsModule,
     MatTableModule,
     MatSortModule,
     MatProgressSpinnerModule,
+    StoreModule.forRoot<Store>({ filters: filtersReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [],
   bootstrap: [AppComponent],

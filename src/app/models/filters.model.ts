@@ -18,3 +18,7 @@ export interface FiltersState {
   status: Status;
   gender: Gender;
 }
+
+export interface Store {
+  filters: FiltersState;
+}
