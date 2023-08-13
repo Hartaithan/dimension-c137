@@ -1,11 +1,10 @@
-/* eslint-disable @ngrx/no-typed-global-store */
 /* eslint-disable @ngrx/no-store-subscription */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { Characters, FilterCharacter, Query } from 'graphql/generated';
 import { Subscription } from 'rxjs';
-import { FiltersState, RootStore } from 'src/app/models/filters.model';
+import { FiltersState } from 'src/app/models/filters.model';
 import { GET_CHARACTERS } from 'src/app/queries/characters';
 import { selectFilters } from 'src/app/store/filters/filters.selectors';
 
@@ -27,7 +26,7 @@ export class CharactersListComponent implements OnInit, OnDestroy {
 
   constructor(
     private apollo: Apollo,
-    private store: Store<RootStore>
+    private store: Store
   ) {}
 
   fetchCharacters(filters: FiltersState) {

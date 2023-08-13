@@ -1,4 +1,3 @@
-/* eslint-disable @ngrx/no-typed-global-store */
 /* eslint-disable @ngrx/no-store-subscription */
 import {
   AfterViewInit,
@@ -22,7 +21,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { selectFilters } from 'src/app/store/filters/filters.selectors';
-import { FiltersState, RootStore } from 'src/app/models/filters.model';
+import { FiltersState } from 'src/app/models/filters.model';
 
 @Component({
   selector: 'app-characters-table',
@@ -49,7 +48,7 @@ export class CharactersTableComponent
   constructor(
     private apollo: Apollo,
     private router: Router,
-    private store: Store<RootStore>
+    private store: Store
   ) {}
 
   fetchCharacters(filters: FiltersState) {

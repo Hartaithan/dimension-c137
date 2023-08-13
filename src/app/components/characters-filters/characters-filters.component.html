@@ -1,11 +1,18 @@
 <div class="filters">
   <div class="filter" id="search">
     <label for="search">Search by name</label>
-    <input id="search" #search placeholder="Enter someone name..." />
+    <input
+      #search
+      id="search"
+      placeholder="Enter someone name..."
+      [value]="name | async" />
   </div>
   <div class="filter" id="status">
     <label for="status">Status</label>
-    <select id="status" (change)="onStatusChange($event)">
+    <select
+      id="status"
+      [value]="status | async"
+      (change)="onStatusChange($event)">
       <option value="" selected>All</option>
       <option value="alive">Alive</option>
       <option value="dead">Dead</option>
@@ -14,7 +21,10 @@
   </div>
   <div class="filter" id="gender">
     <label for="gender">Gender</label>
-    <select id="gender" (change)="onGenderChange($event)">
+    <select
+      id="gender"
+      [value]="gender | async"
+      (change)="onGenderChange($event)">
       <option value="" selected>All</option>
       <option value="female">Female</option>
       <option value="male">Male</option>
