@@ -11,6 +11,9 @@
     "format": "npx prettier --write .",
     "generate": "graphql-codegen"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
